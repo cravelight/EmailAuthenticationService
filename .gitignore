@@ -4,3 +4,4 @@
 
 # Package vlucas/phpdotenv ---
 .env
+test.db

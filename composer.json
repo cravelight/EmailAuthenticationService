@@ -1,0 +1,34 @@
+{
+  "name": "cravelight/email-authentication-service",
+  "type": "library",
+  "description": "Email address authentication service",
+  "keywords": ["authentication"],
+  "homepage": "https://github.com/cravelight/php-email-authentication-service",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "cravelight",
+      "email": "cravelight@gmail.com",
+      "homepage": "https://github.com/cravelight"
+    }
+  ],
+  "autoload": {
+    "psr-4" : {
+      "Cravelight\\Security\\UserAuthentication\\" : "src/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.3",
+    "mockery/mockery": "^0.9.5",
+    "cravelight/phpunit-helpers": "^1.0.0"
+  },
+  "require": {
+    "php": "^7.0",
+    "vlucas/phpdotenv": "^2.2",
+    "robmorgan/phinx": "^0.5.5",
+    "nesbot/Carbon": "^1.21",
+    "illuminate/database": "^5.2"
+  }
+
+}
+
