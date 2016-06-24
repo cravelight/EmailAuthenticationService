@@ -1,7 +1,7 @@
 <?php
 
-use Cravelight\Security\UserAuthentication\EmailAccessCredential;
-use Cravelight\Security\UserAuthentication\EmailAccessCredentialRepository;
+use Cravelight\Security\UserAuthentication\Domain\Models\EmailAccessCredential;
+use Cravelight\Security\UserAuthentication\DataAccess\Repositories\EmailAccessCredentialRepository;
 use Cravelight\PhpUnit\Database_TestCase;
 
 
@@ -31,7 +31,7 @@ class EmailAccessCredentialRepositoryTest extends Database_TestCase
         $actual = $repo->store($expected);
 
         // Assert|Then
-        $this->assertInstanceOf('Cravelight\Security\UserAuthentication\EmailAccessCredential', $actual);
+        $this->assertInstanceOf('Cravelight\Security\UserAuthentication\Domain\Models\EmailAccessCredential', $actual);
         $this->assertEquals($expected->email, $actual->email);
         $this->assertEquals($expected->passwordHash, $actual->passwordHash);
         $this->assertEquals($expected->verifiedAt->getTimestamp(), $actual->verifiedAt->getTimestamp());

@@ -1,8 +1,8 @@
 <?php
 
 use Cravelight\PhpUnit\Database_TestCase;
-use Cravelight\Security\UserAuthentication\EmailVerificationToken;
-use Cravelight\Security\UserAuthentication\EmailVerificationTokenRepository;
+use Cravelight\Security\UserAuthentication\DataAccess\Repositories\EmailVerificationTokenRepository;
+use Cravelight\Security\UserAuthentication\Domain\Models\EmailVerificationToken;
 
 
 class EmailVerificationTokenRepositoryTest extends Database_TestCase
@@ -30,7 +30,7 @@ class EmailVerificationTokenRepositoryTest extends Database_TestCase
         $actual = $repo->store($expected);
 
         // Assert|Then
-        $this->assertInstanceOf('Cravelight\Security\UserAuthentication\EmailVerificationToken', $actual);
+        $this->assertInstanceOf('Cravelight\Security\UserAuthentication\Domain\Models\EmailVerificationToken', $actual);
         $this->assertEquals($expected->email, $actual->email);
         $this->assertEquals($expected->token, $actual->token);
         $this->assertEquals($expected->expiresAt->getTimestamp(), $actual->expiresAt->getTimestamp());

@@ -1,8 +1,11 @@
 <?php
 
-namespace Cravelight\Security\UserAuthentication;
+namespace Cravelight\Security\UserAuthentication\DataAccess\Repositories;
 
 use Carbon\Carbon;
+use Cravelight\Security\UserAuthentication\DataAccess\Models\EloquentEmailAccessCredential;
+use Cravelight\Security\UserAuthentication\Domain\Models\EmailAccessCredential;
+use Cravelight\Security\UserAuthentication\Domain\Repositories\IEmailAccessCredentialRepository;
 
 
 class EmailAccessCredentialRepository implements IEmailAccessCredentialRepository

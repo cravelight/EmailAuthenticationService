@@ -1,6 +1,6 @@
 <?php
 
-namespace Cravelight\Security\UserAuthentication;
+namespace Cravelight\Security\UserAuthentication\DataAccess\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cravelight\Security\UserAuthentication;
+namespace Cravelight\Security\UserAuthentication\DataAccess\Migrations;
 
 use Phinx\Migration\AbstractMigration;
 

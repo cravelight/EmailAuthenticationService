@@ -1,10 +1,12 @@
 <?php
 
-namespace Cravelight\Security\UserAuthentication;
-
-
+namespace Cravelight\Security\UserAuthentication\DataAccess\Repositories;
 
 use Carbon\Carbon;
+use Cravelight\Security\UserAuthentication\DataAccess\Models\EloquentEmailVerificationToken;
+use Cravelight\Security\UserAuthentication\Domain\Models\EmailVerificationToken;
+use Cravelight\Security\UserAuthentication\Domain\Repositories\IEmailVerificationTokenRepository;
+
 
 class EmailVerificationTokenRepository implements IEmailVerificationTokenRepository
 {

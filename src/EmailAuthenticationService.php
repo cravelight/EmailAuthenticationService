@@ -3,6 +3,10 @@
 namespace Cravelight\Security\UserAuthentication;
 
 use Carbon\Carbon;
+use Cravelight\Security\UserAuthentication\Domain\Models\EmailAccessCredential;
+use Cravelight\Security\UserAuthentication\Domain\Models\EmailVerificationToken;
+use Cravelight\Security\UserAuthentication\Domain\Repositories\IEmailAccessCredentialRepository;
+use Cravelight\Security\UserAuthentication\Domain\Repositories\IEmailVerificationTokenRepository;
 
 
 class EmailAuthenticationService
