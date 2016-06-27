@@ -40,8 +40,7 @@ class EmailAuthenticationService
     public function registerEmailAddress(string $email) : EmailAccessCredential
     {
         $emailAccessCredential = new EmailAccessCredential($email);
-        $this->emailAccessCredentialRepo->store($emailAccessCredential);
-        return $emailAccessCredential;
+        return $this->emailAccessCredentialRepo->store($emailAccessCredential);
     }
 
 

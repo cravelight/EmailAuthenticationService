@@ -14,9 +14,7 @@ class EmailAccessCredentialRepository implements IEmailAccessCredentialRepositor
     public function store(EmailAccessCredential $emailAccessCredential) : EmailAccessCredential
     {
         $model = $this->getModelFor($emailAccessCredential);
-        $now = new Carbon();
-        $model->created_at = $model->created_at ?? $now;
-        $model->updated_at = $now;
+        $model->updated_at = new Carbon();
         $model->save();
         return $this->fetchForEmailAddress($emailAccessCredential->email);
     }
@@ -24,19 +22,26 @@ class EmailAccessCredentialRepository implements IEmailAccessCredentialRepositor
     public function fetchForEmailAddress(string $emailAddress) : EmailAccessCredential
     {
         $model = EloquentEmailAccessCredential::find($emailAddress);
-        return $this->getPopoFor($model);
+        return is_null($model)
+            ? null
+            : $this->getPopoFor($model);
     }
 
 
 
     private function getModelFor(EmailAccessCredential $popo) : EloquentEmailAccessCredential
     {
-        $model = new EloquentEmailAccessCredential();
-        $model->email = $popo->email;
+        $model = EloquentEmailAccessCredential::find($popo->email);
+        if (is_null($model)) {
+            $model = new EloquentEmailAccessCredential();
+            $model->email = $popo->email;
+            $model->created_at = new Carbon();
+        }
         $model->password_hash = $popo->passwordHash;
         $model->verified_at = $popo->verifiedAt;
-        $model->created_at = $popo->createdAt;
-        $model->updated_at = $popo->updatedAt;
+        // Dont let the popo set timestamps
+        // $model->created_at = $popo->createdAt;
+        // $model->updated_at = $popo->updatedAt;
         return $model;
     }
 

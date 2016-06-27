@@ -40,6 +40,4 @@ class EmailAccessCredentialRepositoryTest extends Database_TestCase
     }
 
 
-
-
 }
