@@ -14,7 +14,6 @@ class EmailVerificationTokenRepository implements IEmailVerificationTokenReposit
     public function store(EmailVerificationToken $emailVerificationToken) : EmailVerificationToken
     {
         $model = $this->getModelFor($emailVerificationToken);
-        $model->created_at = new Carbon(); // we never update these, they are disposable
         $model->save();
         return $this->fetch($emailVerificationToken->email, $emailVerificationToken->token);
     }
@@ -31,11 +30,16 @@ class EmailVerificationTokenRepository implements IEmailVerificationTokenReposit
 
     private function getModelFor(EmailVerificationToken $popo) : EloquentEmailVerificationToken
     {
-        $model = new EloquentEmailVerificationToken();
+        $model = EloquentEmailVerificationToken::find($popo->token);
+        if (is_null($model)) {
+            $model = new EloquentEmailVerificationToken();
+            $model->token = $popo->token;
+            $model->created_at = new Carbon();
+        }
         $model->email = $popo->email;
-        $model->token = $popo->token;
         $model->expires_at = $popo->expiresAt;
-        $model->created_at = $popo->createdAt;
+        // Dont let the popo set timestamps
+        // $model->created_at = $popo->createdAt;
         return $model;
     }
 
